@@ -1,0 +1,41 @@
+{
+  "images": [
+    {
+      "id": 1,
+      "name": "Image1",
+      "size": 30,
+      "timeOfUpload": "11/05/2021"
+    },
+    {
+      "id": 2,
+      "name": "Image2",
+      "size": 50,
+      "timeOfUpload": "13/07/2020"
+    },
+    {
+      "id": 3,
+      "name": "Image3",
+      "size": 130,
+      "timeOfUpload": "11/05/2023"
+    },
+    {
+      "id": 4,
+      "name": "Image4",
+      "size": 70,
+      "timeOfUpload": "12/05/2023"
+    },
+    {
+      "id": 5,
+      "name": "Image5",
+      "size": 35,
+      "timeOfUpload": "09/07/1999"
+    },
+    {
+      "id": 6,
+      "name": "Image6",
+      "size": 37,
+      "timeOfUpload": "06/22/2001"
+    }
+  ],
+  "predictions": []
+}
