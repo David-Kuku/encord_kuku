@@ -22,8 +22,8 @@ type Modal = {
               onClick={closeModal}
               className=' w-full h-full flex items-center justify-center'
             >
-              <section className={`w-full max-w-[479px] z-10  bg-white rounded-xl ${className}`}>
-                <div className='w-full max-w-[479px] mx-auto space-y-[40px] p-6'>{children}</div>
+              <section className={`w-full z-10  bg-white rounded-xl ${className}`}>
+                <div className='w-full mx-auto space-y-[40px] p-3'>{children}</div>
               </section>
             </div>
           </section>

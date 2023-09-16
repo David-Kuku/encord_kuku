@@ -18,7 +18,9 @@ const Upload = React.memo(({ uploadImg }: IProps) => {
     }
 
     return (
-        <div className='w-[100%] sm:flex sm:gap-2 my-2'>
+        <div className='w-[100%] sm:flex sm:gap-2 my-4'>
+
+
             <div className={'flex justify-center w-[100%]'}>
                 <input
                     ref={ref}
@@ -32,8 +34,8 @@ const Upload = React.memo(({ uploadImg }: IProps) => {
                 />
                 <div>
                     <div
-                    onClick={handleClick}
-                     className='w-full dashed-file mt-[4px] relative px-4 bg-[#F8F8FD] flex flex-col items-center rounded-[5px] outline-none cursor-pointer !gap-[7px] py-3'>
+                        onClick={handleClick}
+                        className='w-full dashed-file mt-[4px] relative px-4 bg-[#F8F8FD] flex flex-col items-center rounded-[5px] outline-none cursor-pointer !gap-[7px] py-3'>
                         <svg
                             width='20'
                             height='20'
@@ -56,7 +58,7 @@ const Upload = React.memo(({ uploadImg }: IProps) => {
                         </svg>
                         <span className='text-[#515B6F] text-[14px]'>
                             <span className='text-black '>
-                                {`Click to uplaod`}
+                                {`Click to upload`}
                             </span>
                         </span>
                     </div>
@@ -65,17 +67,8 @@ const Upload = React.memo(({ uploadImg }: IProps) => {
                     </div>
                 </div>
             </div>
-            {/* 
-          {image?.name && (
-            <div className='flex flex-col gap-1 '>
-              <img
-                src={URL.createObjectURL(image)}
-                alt='checkedImg'
-                className='h-[100px] w-[120px]'
-              />
-              <div className='text-[10px]'>{image.name}</div>
-            </div>
-          )} */}
+
+
         </div>
     )
 })

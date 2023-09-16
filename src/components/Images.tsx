@@ -1,60 +1,33 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { useCallback, useContext } from 'react'
 import Tabs from './Tabs'
 import Upload from './Upload'
 import Table from './Table'
-import { columns } from '../data'
+import { imgColumns } from '../data'
 import { TImage } from '../types'
-import { axiosInstance } from '../config/axiosInstance'
-import { toast } from 'react-toastify'
-import { AxiosError } from 'axios'
-import { ClipLoader } from 'react-spinners'
 import moment from 'moment'
+import AppContext from '../context/AppContext'
 
 const Images = () => {
-    const [images, setImages] = useState<TImage[]>([])
-    const [loading, setLoading] = useState(false)
-    const getImages = async () => {
-        setLoading(true)
-        try {
-            const res: { data: TImage[] } = await axiosInstance.get('/images')
-            setImages(res?.data)
-            setLoading(false)
-        } catch (err: any) {
-            toast.error(err.message)
-            setLoading(false)
-        }
-    }
+    const {images, setImages} = useContext(AppContext)
 
-    const uploadImg = (img:File) => {
+    const uploadImg = useCallback(async (img: File) => {
         const imgObj: TImage = {
-            id: images.length,
             name: img.name,
             size: img.size,
-            timeOfUpload: moment(new Date()).format("DD/MM/YYYY")
+            timeOfUpload: moment(new Date()).format("DD/MM/YYYY"),
+            imageObject: img
         }
-
-        setImages((prev)=> (
-            [...prev, imgObj]
+        setImages((prev) => (
+            [...prev, { ...imgObj, id: prev.length + 1 }]
         ))
-        toast.success('Image uploaded successfully, check table for details')
-    }
-
-    useEffect(() => {
-        getImages()
     }, [])
+
     return (
         <div className='w-[100%] h-[100%]'>
-            {
-                loading ?
-                    <div className='flex w-[100%] h-[100%] justify-center items-center'>
-                        <ClipLoader size={50} color='green' loading={loading} />
-                    </div> :
-                    <>
-                        <Tabs />
-                        <Upload uploadImg = {uploadImg}/>
-                        <Table columns={columns} data={images} />
-                    </>
-            }
+            <Tabs />
+            <Upload uploadImg={uploadImg}/>
+            <Table columns={imgColumns} images={images}/>
+
         </div>
     )
 }

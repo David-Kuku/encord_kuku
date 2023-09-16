@@ -1,30 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import { useContext } from 'react'
 import Tabs from './Tabs'
-import Upload from './Upload'
 import Table from './Table'
-import { columns } from '../data'
-import { TImage } from '../types'
-import { axiosInstance } from '../config/axiosInstance'
-import { toast } from 'react-toastify'
-import { AxiosError } from 'axios'
+import { predictionColumns } from '../data'
+
+import AppContext from '../context/AppContext'
 
 const Predictions = () => {
-    const [images, setImages] = useState<TImage[]>([])
-    const getImages =async () => {
-        try{
-            const res = await axiosInstance.get('/images')
-            console.log(res)
-        } catch (err) {
-            console.log(err)
-        }
-    }
-    useEffect(()=>{
-        getImages()
-    },[])
+    const { predictions } = useContext(AppContext)
     return (
         <div>
             <Tabs />
-            <Table columns={columns} data={images} />
+
+            <>
+                <Table columns={predictionColumns} predictions={predictions} />
+            </>
+
+
         </div>
     )
 }
